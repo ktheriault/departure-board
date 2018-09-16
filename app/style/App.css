@@ -1,3 +1,16 @@
 .app-container {
-    font-size: 20px;
+    padding: 2em;
+}
+
+.station-selector-container {
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+.schedule-table-container {
+    margin-bottom: 2em;
+}
+
+.empty-schedule {
+    text-align: center;
 }

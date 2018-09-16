@@ -1,13 +1,12 @@
 import { connect } from "react-redux";
 import * as actions from '../actions/actions';
-import App from "../components/App";
+import StationSelector from "../components/StationSelector";
 
 const mapStateToProps = (state) => {
     return {
         isLoading: state.isLoading,
         selectedStation: state.selectedStation,
-        schedule: state.schedule,
-    };
+    }
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -15,10 +14,13 @@ const mapDispatchToProps = (dispatch) => {
         setIsLoading: (isLoading) => {
             dispatch(actions.setIsLoading(isLoading));
         },
+        setSelectedStation: (selectedStation) => {
+            dispatch(actions.setSelectedStation(selectedStation));
+        },
         setSchedule: (schedule) => {
             dispatch(actions.setSchedule(schedule));
         },
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(StationSelector);

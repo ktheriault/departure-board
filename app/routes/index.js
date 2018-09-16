@@ -1,5 +1,5 @@
-const userRoutes = require("./user");
+const mbtaRoutes = require("./mbta");
 
 module.exports = function(router) {
-    userRoutes(router);
+    mbtaRoutes(router);
 }

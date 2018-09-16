@@ -155,7 +155,6 @@ function getDisplayTimeFromTimestamp(timestamp) {
 function getSchedules(stationID) {
     var url = baseURL + "/schedules/" + stationID;
     return axios.get(url).then(function (response) {
-        console.log(response.data);
         var schedules = response.data.map(function (item) {
             var predictionAttributes = item.relationships.prediction && item.relationships.prediction.attributes;
             return _extends({}, item, {
@@ -175,7 +174,6 @@ function getSchedules(stationID) {
         });
         return schedules;
     }).catch(function (err) {
-        console.log(err);
         return err;
     });
 }

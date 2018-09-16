@@ -17,8 +17,8 @@ function getSchedules(stationID) {
     const url = `${baseURL}/schedules/${stationID}`;
     return axios.get(url)
         .then((response) => {
+            console.log(response.data);
             const schedules = response.data.map((item) => {
-                console.log(schedules);
                 const predictionAttributes = item.relationships.prediction && item.relationships.prediction.attributes;
                 return {
                     ...item,

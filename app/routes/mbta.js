@@ -13,11 +13,20 @@ module.exports = function(router) {
         const maxTime = new Date(now + 7200000).toTimeString().split(":");
         const maxTimeString = `${maxTime[0]}:${maxTime[1]}`;
         const url = `${baseURL}/schedules?include=trip,prediction&sort=arrival_time&filter[min_time]=${minTimeString}&filter[max_time]=${maxTimeString}&filter[stop]=${stationID}`;
+        console.log();
+        console.log("/schedules/:stationID");
+        console.log();
         agent.get(url)
             .end((scheduleError, scheduleResponse) => {
                 if (scheduleError) {
+                    console.log();
+                    console.log("scheduleError");
+                    console.log();
                     res.status(500).send(scheduleError);
                 } else {
+                    console.log();
+                    console.log(scheduleResponse.body.data);
+                    console.log();
                     const rawSchedules = scheduleResponse.body.data;
                     const crSchedules = rawSchedules.filter((item) => {
                         return item.relationships.route.data.id.slice(0,3) === "CR-"
@@ -29,8 +38,14 @@ module.exports = function(router) {
                     agent.get(tripsURL)
                         .end((tripsError, tripsResponse) => {
                             if (tripsError) {
+                                console.log();
+                                console.log("tripsError");
+                                console.log();
                                 res.status(500).send(tripsError);
                             } else {
+                                console.log();
+                                console.log(tripsResponse.body.data);
+                                console.log();
                                 const trips = tripsResponse.body.data
                                 let tripsDict = {};
                                 trips.forEach((trip) => {
@@ -52,10 +67,16 @@ module.exports = function(router) {
 
                                 const predictionsURL = `${baseURL}/predictions?filter[stop]=${stationID}`;
                                 agent.get(predictionsURL)
-                                    .end((predictionsErr, predictionsResponse) => {
-                                        if (predictionsErr) {
-                                            res.status(500).send(predictionsErr)
+                                    .end((predictionsError, predictionsResponse) => {
+                                        if (predictionsError) {
+                                            console.log();
+                                            console.log(preditionsErr);
+                                            console.log();
+                                            res.status(500).send(predictionsError)
                                         } else {
+                                            console.log();
+                                            console.log(predictionsResponse.body.data;);
+                                            console.log();
                                             const predictions = predictionsResponse.body.data;
                                             const predictionsDict = {}
                                             predictions.forEach((prediction) => {

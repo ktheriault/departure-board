@@ -75,7 +75,7 @@ module.exports = function(router) {
                                             res.status(500).send(predictionsError)
                                         } else {
                                             console.log();
-                                            console.log(predictionsResponse.body.data;);
+                                            console.log(predictionsResponse.body.data);
                                             console.log();
                                             const predictions = predictionsResponse.body.data;
                                             const predictionsDict = {}

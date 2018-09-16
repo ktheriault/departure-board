@@ -156,6 +156,7 @@ function getSchedules(stationID) {
     var url = baseURL + "/schedules/" + stationID;
     return axios.get(url).then(function (response) {
         var schedules = response.data.map(function (item) {
+            console.log(schedules);
             var predictionAttributes = item.relationships.prediction && item.relationships.prediction.attributes;
             return _extends({}, item, {
                 attributes: _extends({}, item.attributes, {
@@ -174,6 +175,7 @@ function getSchedules(stationID) {
         });
         return schedules;
     }).catch(function (err) {
+        console.log(err);
         return err;
     });
 }

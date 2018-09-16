@@ -18,6 +18,7 @@ function getSchedules(stationID) {
     return axios.get(url)
         .then((response) => {
             const schedules = response.data.map((item) => {
+                console.log(schedules);
                 const predictionAttributes = item.relationships.prediction && item.relationships.prediction.attributes;
                 return {
                     ...item,
@@ -42,6 +43,7 @@ function getSchedules(stationID) {
             return schedules;
         })
         .catch((err) => {
+            console.log(err);
             return err;
         })
 }

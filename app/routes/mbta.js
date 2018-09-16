@@ -14,7 +14,7 @@ module.exports = function(router) {
         const maxTimeString = `${maxTime[0]}:${maxTime[1]}`;
         const url = `${baseURL}/schedules?include=trip,prediction&sort=arrival_time&filter[min_time]=${minTimeString}&filter[max_time]=${maxTimeString}&filter[stop]=${stationID}`;
         console.log();
-        console.log("/schedules/:stationID");
+        console.log(url);
         console.log();
         agent.get(url)
             .end((scheduleError, scheduleResponse) => {

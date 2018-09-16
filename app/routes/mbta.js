@@ -19,9 +19,6 @@ module.exports = function(router) {
         agent.get(url)
             .end((scheduleError, scheduleResponse) => {
                 if (scheduleError) {
-                    console.log();
-                    console.log("scheduleError");
-                    console.log();
                     res.status(500).send(scheduleError);
                 } else {
                     console.log();
@@ -38,9 +35,6 @@ module.exports = function(router) {
                     agent.get(tripsURL)
                         .end((tripsError, tripsResponse) => {
                             if (tripsError) {
-                                console.log();
-                                console.log("tripsError");
-                                console.log();
                                 res.status(500).send(tripsError);
                             } else {
                                 console.log();
@@ -69,14 +63,8 @@ module.exports = function(router) {
                                 agent.get(predictionsURL)
                                     .end((predictionsError, predictionsResponse) => {
                                         if (predictionsError) {
-                                            console.log();
-                                            console.log(preditionsErr);
-                                            console.log();
                                             res.status(500).send(predictionsError)
                                         } else {
-                                            console.log();
-                                            console.log(predictionsResponse.body.data);
-                                            console.log();
                                             const predictions = predictionsResponse.body.data;
                                             const predictionsDict = {}
                                             predictions.forEach((prediction) => {
